@@ -2,3 +2,42 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  #mainNav ul li {
+    @apply border-b-3 border-transparent py-5 px-8 cursor-pointer;
+  }
+
+  #mainNav ul li.active {
+    @apply border-white bg-gray-50 bg-opacity-20;
+  }
+
+  #mainNav ul li:hover {
+    @apply border-white bg-gray-50 bg-opacity-20;
+  }
+
+  #mainSection {
+    background-image: url(./asset/img/bg.jpg);
+    @apply bg-no-repeat bg-center bg-cover;
+  }
+
+  .tournaments {
+    @apply flex gap-6;
+  }
+
+  .tournament {
+    @apply rounded-lg overflow-hidden text-white text-center cursor-pointer my-4;
+  }
+
+  .tournament .tournament-top {
+    @apply bg-lincolnGreen text-2xl py-3;
+  }
+
+  .tournament .tournament-starts {
+    @apply bg-indigo py-3;
+  }
+
+  .tournament .tournament-img img {
+    @apply h-48 w-full object-cover;
+  }
+}
