@@ -1,14 +1,40 @@
+import NavItem from "./NavItem"
+
+// import { Link } from "react-router-dom";
 const Navbar = () => {
+  const navItems = [
+    {
+      text: 'TOURNAMENTS',
+      pathname: '/'
+    },
+    {
+      text: 'NFT MARKET',
+      pathname: '/nft-market'
+    },
+    {
+      text: 'MERCH STORE',
+      pathname: '/merch-store'
+    },
+    {
+      text: 'LEAGUE TABLES',
+      pathname: '/league-tables'
+    },
+    {
+      text: 'PLAYER STATS',
+      pathname: '/player-stats'
+    },
+    {
+      text: 'LOGOUT',
+      pathname: '/logout'
+    },
+  ]
   return (
-    <nav id="mainNav" className="bg-darkPurple text-white">
+    <nav id="mainNav">
       <div className="container mx-auto">
-        <ul className="flex justify-center">
-          <li className="active">TOURNAMENTS</li>
-          <li className="py-5 px-8">NFT MARKET</li>
-          <li className="py-5 px-8">MERCH STORE</li>
-          <li className="py-5 px-8">LEAGUE TABLES</li>
-          <li className="py-5 px-8">PLAYER STATS</li>
-          <li className="py-5 px-8">LOGOUT</li>
+        <ul className="menu-nav">
+          {navItems.map((navItem, index) => (
+            <NavItem navItem={navItem} />
+          ))}
         </ul>
       </div>
     </nav>

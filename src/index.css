@@ -4,15 +4,23 @@
 @tailwind utilities;
 
 @layer components {
-  #mainNav ul li {
-    @apply border-b-3 border-transparent py-5 px-8 cursor-pointer;
+  #mainNav {
+    @apply bg-darkPurple text-white;
   }
 
-  #mainNav ul li.active {
+  #mainNav .menu-nav {
+    @apply flex justify-center;
+  }
+
+  #mainNav .menu-nav .menu-item .menu-link {
+    @apply border-b-3 border-transparent py-5 px-8 cursor-pointer inline-block;
+  }
+
+  #mainNav .menu-nav .menu-item .menu-link.active {
     @apply border-white bg-gray-50 bg-opacity-20;
   }
 
-  #mainNav ul li:hover {
+  #mainNav .menu-nav .menu-item .menu-link:hover {
     @apply border-white bg-gray-50 bg-opacity-20;
   }
 
@@ -22,11 +30,11 @@
   }
 
   .tournaments {
-    @apply flex gap-6;
+    @apply grid grid-cols-4 gap-6;
   }
 
   .tournament {
-    @apply rounded-lg overflow-hidden text-white text-center cursor-pointer my-4;
+    @apply rounded-lg overflow-hidden text-white text-center cursor-pointer mx-auto;
   }
 
   .tournament .tournament-top {
