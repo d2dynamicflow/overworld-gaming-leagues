@@ -33,7 +33,7 @@ const Navbar = () => {
       <div className="container mx-auto">
         <ul className="menu-nav">
           {navItems.map((navItem, index) => (
-            <NavItem navItem={navItem} />
+            <NavItem navItem={navItem} key={index} />
           ))}
         </ul>
       </div>

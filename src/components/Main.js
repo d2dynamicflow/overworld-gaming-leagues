@@ -25,6 +25,9 @@ const Main = () => {
           <Route path="/logout">
             <h1 className="text-3xl text-center text-white mb-8">LOGOUT</h1>
           </Route>
+          <Route path="/games/:name">
+            <h1 className="text-3xl text-center text-white mb-8">TOURNAMENT DETAILS</h1>
+          </Route>
         </Switch>
       </div>
     </section>

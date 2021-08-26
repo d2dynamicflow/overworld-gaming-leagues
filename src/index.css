@@ -42,7 +42,7 @@
   }
 
   .tournament .tournament-starts {
-    @apply bg-indigo py-3;
+    @apply bg-indigo uppercase py-3;
   }
 
   .tournament .tournament-img img {
