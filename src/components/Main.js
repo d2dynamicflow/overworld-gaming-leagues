@@ -1,5 +1,7 @@
 import { Switch, Route } from "react-router-dom";
-import { Tournaments } from "./Tournaments"
+import Games from "./Games";
+import Tournaments from "./Tournaments";
+
 
 const Main = () => {
   return (
@@ -8,7 +10,7 @@ const Main = () => {
         <Switch>
           <Route path="/" exact>
             <h1 className="text-3xl text-center text-white mb-8">UPCOMING TOURNAMENTS</h1>
-            <Tournaments />
+            <Games />
           </Route>
           <Route path="/nft-market">
             <h1 className="text-3xl text-center text-white mb-8">NFT MARKET</h1>
@@ -27,6 +29,7 @@ const Main = () => {
           </Route>
           <Route path="/games/:name">
             <h1 className="text-3xl text-center text-white mb-8">TOURNAMENT DETAILS</h1>
+            <Tournaments />
           </Route>
         </Switch>
       </div>
