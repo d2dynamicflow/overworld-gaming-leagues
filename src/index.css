@@ -84,11 +84,7 @@
   }
 
   .tournaments .tournament-img img {
-    @apply max-w-full h-52 object-cover;
-  }
-
-  .tournaments .tournament-img img {
-    @apply max-w-full h-52 object-cover;
+    @apply w-full h-52 object-cover;
   }
 
   .tournaments .tournament-body {
