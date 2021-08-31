@@ -28,7 +28,7 @@
   }
 
   #mainNav .menu-nav .menu-item .menu-link {
-    @apply border-transparent border-b-3 cursor-pointer block lg:inline-block py-5 px-8 hover:border-white hover:bg-gray-50 hover:bg-opacity-20;
+    @apply border-transparent border-b-3 cursor-pointer block lg:inline-block w-full text-center py-5 px-8 hover:border-white hover:bg-gray-50 hover:bg-opacity-20;
   }
 
   #mainNav .menu-nav .menu-item .menu-link.active {
