@@ -13,7 +13,7 @@ const Tournaments = () => {
   const tournaments = state.tournaments.filter(tournament => tournament.gameId === gameId);
 
   return (
-    <div className="grid grid-cols-4 gap-6 text-white">
+    <div className="grid grid-cols-1 gap-6 text-white px-4 md:grid-cols-2 lg:grid-cols-4 lg:px-0">
       { tournaments.map((tournament, index) => (
         <div className="bg-indigo p-3 rounded">
           <h1 className="text-xl font-bold">{ game.name } : { tournament.name }</h1>

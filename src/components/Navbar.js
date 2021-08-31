@@ -1,7 +1,26 @@
+import { useEffect, useState } from 'react';
+import { BiMenu } from 'react-icons/bi';
 import NavItem from "./NavItem"
 
-// import { Link } from "react-router-dom";
 const Navbar = () => {
+  const [responsive, setResponsive] = useState(false)
+  const [largeScreen, setLargeScreen] = useState(window.innerWidth >= 1024)
+  const toggleMenu = () => {
+    setResponsive(!responsive);
+  }
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setResponsive(false);
+        setLargeScreen(true);
+      } else {
+        setLargeScreen(false);
+      }
+    }
+    window.addEventListener('resize', handleResize)
+  })
+
   const navItems = [
     {
       text: 'TOURNAMENTS',
@@ -28,13 +47,22 @@ const Navbar = () => {
       pathname: '/logout'
     },
   ]
+
   return (
     <nav id="mainNav">
-      <div className="container mx-auto">
-        <ul className="menu-nav">
-          {navItems.map((navItem, index) => (
-            <NavItem navItem={navItem} key={index} />
-          ))}
+      <div className="container mx-auto flex flex-col justify-end lg:justify-center">
+        <div className="flex">
+          <button className="menu-toggler" onClick={ toggleMenu }>
+            <BiMenu />
+          </button>
+        </div>
+        <ul className={ largeScreen ? "menu-nav" : responsive ? "menu-nav show" : "menu-nav hide" }>
+          { navItems.map((navItem, index) => (
+            <NavItem navItem={ navItem } key={ index } toggleMenu={ toggleMenu } />
+          )) }
+          <li className="menu-item">
+            <a href="/" onClick={ toggleMenu } className="menu-btn">CONNECT</a>
+          </li>
         </ul>
       </div>
     </nav>
