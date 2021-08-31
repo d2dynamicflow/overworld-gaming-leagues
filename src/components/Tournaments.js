@@ -12,13 +12,89 @@ const Tournaments = () => {
   const game = state.games.find(game => game.id === gameId);
   const tournaments = state.tournaments.filter(tournament => tournament.gameId === gameId);
 
+  const momentFromNow = (t1, t2) => {
+
+    let output = "";
+    let momentYears = Math.abs(t1.diff(t2, "years"));
+    let momentMonths = Math.abs(t1.diff(t2, "months"));
+    let momentDays = Math.abs(t1.diff(t2, "days"));
+    let momentHours = Math.abs(t1.diff(t2, "hours"));
+    let momentMinutes = Math.abs(t1.diff(t2, "minutes"));
+    let momentSeconds = Math.abs(t1.diff(t2, "seconds"));
+
+    if (t1.isBefore(t2)) {
+      output = output.concat("Starts in ");
+    } else {
+      output = output.concat("Started At ");
+    }
+
+    if (momentYears) {
+      output = output.concat(momentYears, "Y ");
+    }
+
+    if (momentMonths) {
+      if (!momentYears) {
+        output = output.concat(momentMonths, "M ");
+      } else {
+        output = output.concat(momentMonths % 12, "M ");
+      }
+    }
+
+    if (momentDays) {
+      if (!momentMonths) {
+        output = output.concat(momentDays, "D ");
+      } else {
+        output = output.concat(momentDays % 30, "D ");
+      }
+    }
+
+    if (momentHours) {
+      if (!momentDays) {
+        output = output.concat(momentHours, "H ");
+      } else {
+        output = output.concat(momentHours % 24, "H ");
+      }
+    }
+
+    if (momentMinutes) {
+      if (!momentHours) {
+        output = output.concat(momentMinutes, "M ");
+      } else {
+        output = output.concat(momentMinutes % 60, "M ");
+      }
+    }
+
+    if (momentSeconds) {
+      if (!momentMinutes) {
+        output = output.concat(momentSeconds, "S ");
+      } else {
+        output = output.concat(momentSeconds % 60, "S ");
+      }
+    }
+
+
+    return output;
+  }
+
+
   return (
-    <div className="grid grid-cols-1 gap-6 text-white px-4 md:grid-cols-2 lg:grid-cols-4 lg:px-0">
+    <div className="tournaments">
       { tournaments.map((tournament, index) => (
-        <div className="bg-indigo p-3 rounded">
-          <h1 className="text-xl font-bold">{ game.name } : { tournament.name }</h1>
-          {/* TODO : Date Format */ }
-          {/* <p>{ moment(tournament.startDate).format("MMM DD, h:mm A") } <span className="text-red-500">Starts { moment(tournament.startDate).toNow("d[D]") }</span></p> */ }
+        <div className="tournament" key={ index }>
+          <div className="tournament-img">
+            <img src={ game.imgUrl } alt={ game.name } />
+          </div>
+          <div className="tournament-body">
+            <h1 className="tournament-title">{ game.name } :<br /> { tournament.name }</h1>
+            <p className="tournament-date">
+              <span className="tournament-date-1">{ moment(tournament.startDate).format("MMM DD, h:mm A") }</span>
+              <span className="tournament-date-2">{ momentFromNow(moment(), moment(tournament.startDate)) }</span>
+            </p>
+            <p className="tournament-keyval"><span className="tournament-key">Entry/Player</span>{ tournament.entryPlayer }</p>
+            <p className="tournament-keyval"><span className="tournament-key">Team Size</span>{ tournament.teamSize }</p>
+            <p className="tournament-keyval"><span className="tournament-key">Regions</span>{ tournament.regions }</p>
+            <p className="tournament-keyval"><span className="tournament-key">Skill Level</span>{ tournament.skillLevel }</p>
+          </div>
         </div>
       )) }
     </div>

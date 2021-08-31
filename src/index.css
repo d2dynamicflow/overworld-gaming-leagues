@@ -51,6 +51,9 @@
   .games {
     @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4 lg:px-0;
   }
+  .games > * {
+    @apply rounded-lg overflow-hidden shadow-lg;
+  }
 
   .game {
     @apply rounded-lg overflow-hidden text-white text-center cursor-pointer mx-auto;
@@ -70,5 +73,45 @@
 
   .game .game-img img {
     @apply h-48 w-full object-cover;
+  }
+
+  .tournaments {
+    @apply grid grid-cols-1 gap-6 text-white px-4 md:grid-cols-2 lg:grid-cols-4 lg:px-0;
+  }
+
+  .tournaments .tournament {
+    @apply bg-indigo rounded-lg overflow-hidden;
+  }
+
+  .tournaments .tournament-img img {
+    @apply max-w-full h-52 object-cover;
+  }
+
+  .tournaments .tournament-img img {
+    @apply max-w-full h-52 object-cover;
+  }
+
+  .tournaments .tournament-body {
+    @apply p-3;
+  }
+
+  .tournaments .tournament-body > * {
+    @apply mb-3;
+  }
+
+  .tournaments .tournament-body .tournament-title {
+    @apply text-xl font-bold;
+  }
+
+  .tournaments .tournament-body .tournament-date .tournament-date-1 {
+    @apply mr-2;
+  }
+
+  .tournaments .tournament-body .tournament-date .tournament-date-2 {
+    @apply text-red-500;
+  }
+
+  .tournaments .tournament-keyval .tournament-key {
+    @apply bg-darkPurple bg-opacity-50 rounded text-sm px-2 py-1 mr-2;
   }
 }
