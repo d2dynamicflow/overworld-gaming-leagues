@@ -13,7 +13,7 @@ const Tournaments = () => {
 
   return (
     <div className="tournaments">
-      { tournaments.map((tournament, index) => (
+      { tournaments && tournaments.map((tournament, index) => (
         <Tournament tournament={ tournament } key={ index } />
       )) }
     </div>

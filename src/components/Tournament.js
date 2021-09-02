@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import moment from 'moment';
 import { GlobalContext } from "../Context/GlobalContext";
+import { Link } from "react-router-dom";
 
 const Tournament = ({ tournament }) => {
   const [state] = useContext(GlobalContext)
@@ -80,22 +81,27 @@ const Tournament = ({ tournament }) => {
   }
 
   return (
-    <div className="tournament" >
-      <div className="tournament-img">
-        <img src={ game.imgUrl } alt={ game.name } />
+    <Link to={ {
+      pathname: `/tournaments/${state.function.convertToSlug(tournament.name)}`,
+      state: { id: tournament.id }
+    } }>
+      <div className="tournament" >
+        <div className="tournament-img">
+          <img src={ game.imgUrl } alt={ game.name } />
+        </div>
+        <div className="tournament-body">
+          <h1 className="tournament-title">{ game.name } :<br /> { tournament.name }</h1>
+          <p className="tournament-date">
+            <span className="tournament-date-1">{ moment(tournament.startDate).format("MMM DD, h:mm A") }</span>
+            <span className="tournament-date-2">{ momentFromNow(moment(), moment(tournament.startDate)) }</span>
+          </p>
+          <p className="tournament-keyval"><span className="tournament-key">Entry/Player</span>{ tournament.entryPlayer }</p>
+          <p className="tournament-keyval"><span className="tournament-key">Team Size</span>{ tournament.teamSize }</p>
+          <p className="tournament-keyval"><span className="tournament-key">Regions</span>{ tournament.regions }</p>
+          <p className="tournament-keyval"><span className="tournament-key">Skill Level</span>{ tournament.skillLevel }</p>
+        </div>
       </div>
-      <div className="tournament-body">
-        <h1 className="tournament-title">{ game.name } :<br /> { tournament.name }</h1>
-        <p className="tournament-date">
-          <span className="tournament-date-1">{ moment(tournament.startDate, "dddd, MMMM D, YYYY h:mm:ss A").format("MMM DD, h:mm A") }</span>
-          <span className="tournament-date-2">{ momentFromNow(moment(), moment(tournament.startDate)) }</span>
-        </p>
-        <p className="tournament-keyval"><span className="tournament-key">Entry/Player</span>{ tournament.entryPlayer }</p>
-        <p className="tournament-keyval"><span className="tournament-key">Team Size</span>{ tournament.teamSize }</p>
-        <p className="tournament-keyval"><span className="tournament-key">Regions</span>{ tournament.regions }</p>
-        <p className="tournament-keyval"><span className="tournament-key">Skill Level</span>{ tournament.skillLevel }</p>
-      </div>
-    </div>
+    </Link>
   )
 }
 

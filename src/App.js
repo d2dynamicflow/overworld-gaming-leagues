@@ -7,6 +7,7 @@ import { GlobalProvider } from "./Context/GlobalContext";
 
 
 function App() {
+
   return (
     <GlobalProvider>
       <Router>

@@ -1,5 +1,6 @@
 import { Switch, Route } from "react-router-dom";
 import Games from "./Games";
+import TournamentDetails from "./TournamentDetails";
 import Tournaments from "./Tournaments";
 
 
@@ -28,8 +29,11 @@ const Main = () => {
             <h1 className="text-3xl text-center text-white mb-8">LOGOUT</h1>
           </Route>
           <Route path="/games/:name">
-            <h1 className="text-3xl text-center text-white mb-8">TOURNAMENT DETAILS</h1>
+            <h1 className="text-3xl text-center text-white mb-8">All TOURNAMENTS</h1>
             <Tournaments />
+          </Route>
+          <Route path="/tournaments/:name">
+            <TournamentDetails />
           </Route>
         </Switch>
       </div>

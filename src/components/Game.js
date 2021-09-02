@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import moment from 'moment';
+import { useContext } from "react";
+import { GlobalContext } from "../Context/GlobalContext";
 
 const Game = ({ game }) => {
-  const convertToSlug = (text) => {
-    return text.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
-  }
+  const [state] = useContext(GlobalContext)
+
   return (
     <Link to={ {
-      pathname: `/games/${convertToSlug(game.name)}`,
+      pathname: `/games/${state.function.convertToSlug(game.name)}`,
       state: { id: game.id }
     } }>
       <div className="game">
