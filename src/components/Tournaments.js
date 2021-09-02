@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { GlobalContext } from "../Context/GlobalContext";
 import Tournament from "./Tournament";
@@ -6,12 +6,14 @@ import Tournament from "./Tournament";
 
 const Tournaments = () => {
   const [state] = useContext(GlobalContext);
+  const history = useHistory();
 
   const location = useLocation();
+  if (!location.state) {
+    history.replace("/");
+  }
   const gameId = location.state.id;
   const game = state.games.find(game => game.id === gameId);
-  console.log("game");
-  console.log(game);
   const tournaments = state.tournaments.filter(tournament => tournament.gameId === gameId);
 
   return (
