@@ -1,20 +1,11 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import moment from 'moment';
 import { GlobalContext } from "../Context/GlobalContext";
 import { Link } from "react-router-dom";
 
 const Tournament = ({ tournament }) => {
   const [state] = useContext(GlobalContext)
-  const [game, setGame] = useState({})
 
-  useEffect(() => {
-    const getGame = async () => {
-      const gameFromServer = await state.function.fetchGameById(tournament.gameId)
-      setGame(gameFromServer)
-    }
-
-    getGame()
-  }, [state, tournament])
 
   const momentFromNow = (t1, t2) => {
 
@@ -82,15 +73,15 @@ const Tournament = ({ tournament }) => {
 
   return (
     <Link to={ {
-      pathname: `/tournaments/${state.function.convertToSlug(tournament.name)}`,
+      pathname: `/tournaments/${state.functions.convertToSlug(tournament.name)}`,
       state: { id: tournament.id }
     } }>
       <div className="tournament" >
         <div className="tournament-img">
-          <img src={ game.imgUrl } alt={ game.name } />
+          <img src={ tournament.game.imgUrl } alt={ tournament.game.name } />
         </div>
         <div className="tournament-body">
-          <h1 className="tournament-title">{ game.name } :<br /> { tournament.name }</h1>
+          <h1 className="tournament-title">{ tournament.game.name } :<br /> { tournament.name }</h1>
           <p className="tournament-date">
             <span className="tournament-date-1">{ moment(tournament.startDate).format("MMM DD, h:mm A") }</span>
             <span className="tournament-date-2">{ momentFromNow(moment(), moment(tournament.startDate)) }</span>

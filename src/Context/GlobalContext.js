@@ -16,15 +16,15 @@ export const GlobalProvider = (props) => {
     }
   }
   // Fetch Game By Id
-  const fetchGameById = async (id) => {
-    try {
-      const res = await fetch(`${apiUrl}/games/${id}`)
-      const data = await res.json()
-      return data
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  // const fetchGameById = async (id) => {
+  //   try {
+  //     const res = await fetch(`${apiUrl}/games/${id}`)
+  //     const data = await res.json()
+  //     return data
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
   // Fetch Tournaments
   const fetchTournaments = async () => {
     try {
@@ -35,19 +35,30 @@ export const GlobalProvider = (props) => {
       console.log(error);
     }
   }
+  // Fetch Tournaments
+  // const fetchTournamentsById = async (id) => {
+  //   try {
+  //     const res = await fetch(`${apiUrl}/tournaments/${id}`)
+  //     const data = await res.json()
+  //     return data
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
   // Convert To Slug
   const convertToSlug = (text) => {
     return text.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
   }
 
   let initialState = {
-    "loading": false,
+    "loading": true,
     "games": [],
     "tournaments": [],
-    "function": {
-      fetchGames,
-      fetchGameById,
-      fetchTournaments,
+    "functions": {
+      // fetchGames,
+      // fetchGameById,
+      // fetchTournaments,
+      // fetchTournamentsById,
       convertToSlug
     }
   };
@@ -59,7 +70,7 @@ export const GlobalProvider = (props) => {
       const gamesFromServer = await fetchGames()
       const tournamentsFromServer = await fetchTournaments()
       setState(prevState => {
-        return { ...prevState, "games": gamesFromServer, "tournaments": tournamentsFromServer };
+        return { ...prevState, "games": gamesFromServer, "tournaments": tournamentsFromServer, "loading": false };
       })
     }
     getData()

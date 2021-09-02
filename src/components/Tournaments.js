@@ -9,12 +9,15 @@ const Tournaments = () => {
 
   const location = useLocation();
   const gameId = location.state.id;
+  const game = state.games.find(game => game.id === gameId);
+  console.log("game");
+  console.log(game);
   const tournaments = state.tournaments.filter(tournament => tournament.gameId === gameId);
 
   return (
     <div className="tournaments">
       { tournaments && tournaments.map((tournament, index) => (
-        <Tournament tournament={ tournament } key={ index } />
+        <Tournament tournament={ { ...tournament, "game": game } } key={ index } />
       )) }
     </div>
   )
