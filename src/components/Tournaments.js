@@ -9,10 +9,12 @@ const Tournaments = () => {
   const history = useHistory();
 
   const location = useLocation();
-  if (!location.state) {
+  let gameId = 0;
+  if (location.state === undefined) {
     history.replace("/");
+  } else {
+    gameId = location.state.id;
   }
-  const gameId = location.state.id;
   const game = state.games.find(game => game.id === gameId);
   const tournaments = state.tournaments.filter(tournament => tournament.gameId === gameId);
 
