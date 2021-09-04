@@ -83,7 +83,7 @@ const Tournament = ({ tournament }) => {
         <div className="tournament-body">
           <h1 className="tournament-title">{ tournament.game.name } :<br /> { tournament.name }</h1>
           <p className="tournament-date">
-            <span className="tournament-date-1">{ moment(tournament.startDate).format("MMM DD, h:mm A") }</span>
+            <span className="tournament-date-1">{ moment(tournament.startDate).format("MMM DD, h:mm A [EDT]") }</span>
             <span className="tournament-date-2">{ momentFromNow(moment(), moment(tournament.startDate)) }</span>
           </p>
           <p className="tournament-keyval"><span className="tournament-key">Entry/Player</span>{ tournament.entryPlayer }</p>

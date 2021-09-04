@@ -103,6 +103,10 @@
     @apply text-xl font-bold;
   }
 
+  .tournaments .tournament-body .tournament-date {
+    @apply text-sm;
+  }
+
   .tournaments .tournament-body .tournament-date .tournament-date-1 {
     @apply mr-2;
   }
@@ -113,5 +117,21 @@
 
   .tournaments .tournament-keyval .tournament-key {
     @apply bg-darkPurple bg-opacity-50 rounded text-sm px-2 py-1 mr-2;
+  }
+
+  .tournament-info-table tr td {
+    @apply px-5 py-1;
+  }
+
+  .tournament-info-table tr td:not(:last-child) {
+    @apply border-r;
+  }
+
+  .tournament-info-table thead tr td {
+    @apply text-xs text-gray-400;
+  }
+
+  .tournament-info-table .table-header td {
+    @apply text-xs;
   }
 }

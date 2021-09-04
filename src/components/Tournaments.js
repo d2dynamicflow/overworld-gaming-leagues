@@ -1,5 +1,5 @@
 import { useHistory, useLocation } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { GlobalContext } from "../Context/GlobalContext";
 import Tournament from "./Tournament";
 
@@ -7,14 +7,14 @@ import Tournament from "./Tournament";
 const Tournaments = () => {
   const [state] = useContext(GlobalContext);
   const history = useHistory();
-
   const location = useLocation();
-  let gameId = 0;
-  if (location.state === undefined) {
-    history.replace("/");
-  } else {
-    gameId = location.state.id;
-  }
+  // useEffect is similar to componentDidMount:
+  useEffect(() => {
+    if (location.state === undefined) {
+      history.push("/");
+    }
+  });
+  const gameId = location.state !== undefined ? location.state.id : 0;
   const game = state.games.find(game => game.id === gameId);
   const tournaments = state.tournaments.filter(tournament => tournament.gameId === gameId);
 
