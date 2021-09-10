@@ -119,19 +119,76 @@
     @apply bg-darkPurple bg-opacity-50 rounded text-sm px-2 py-1 mr-2;
   }
 
-  .tournament-info-table tr td {
-    @apply px-5 py-1;
+  .tournament-details {
+    @apply px-4 lg:px-0;
   }
 
-  .tournament-info-table tr td:not(:last-child) {
+  .tournament-details .tournament-details-block {
+    @apply flex flex-col lg:flex-row bg-white text-white bg-opacity-5 backdrop-filter backdrop-blur-sm rounded-lg p-5 mb-3;
+  }
+
+  .tournament-details .tournament-details-block .tournament-details-block-img {
+    @apply w-full h-40 lg:w-60 lg:h-60 object-cover rounded shadow-lg mb-3 lg:mb-0 lg:mr-5;
+  }
+
+  .tournament-details .tournament-details-block .tournament-details-block-info {
+    @apply flex-grow;
+  }
+
+  .tournament-details .tournament-details-block .tournament-details-block-info .tournament-name {
+    @apply text-3xl md:text-4xl font-bold mb-3;
+  }
+
+  .tournament-details .tournament-details-block .tournament-details-block-info .tournament-game-name {
+    @apply mb-3;
+  }
+
+  .tournament-details .tournament-details-block-sm {
+    @apply bg-white bg-opacity-5 backdrop-filter backdrop-blur-sm rounded-lg p-3;
+  }
+
+  .tournament-details .tournament-info-table {
+    @apply table-auto;
+  }
+  
+  .tournament-details .tournament-info-table tr td {
+    @apply px-5 py-1;
+  }
+  
+  .tournament-details .tournament-info-table tr td:first-child {
+    @apply pl-0;
+  }
+  
+  .tournament-details .tournament-info-table tr td:last-child {
+    @apply pr-0;
+  }
+
+  .tournament-details .tournament-info-table tr td:not(:last-child) {
     @apply border-r;
   }
 
-  .tournament-info-table thead tr td {
+  .tournament-details .tournament-info-table thead tr td {
     @apply text-xs text-gray-400;
   }
 
-  .tournament-info-table .table-header td {
+  .tournament-details .tournament-info-table .table-header td {
     @apply text-xs;
   }
+  
+  .tournament-details .registration-timer {
+    @apply text-gray-400 mr-4;
+  }
+
+  .tournament-details .registration-timer span {
+    @apply text-3xl text-white;
+  }
+
+  .tournament-details .btn-enroll {
+    @apply font-medium text-xl text-white bg-white bg-opacity-20 backdrop-filter backdrop-blur-sm shadow rounded py-3 px-4;
+  }
+
+  .tournament-details .btn-enroll:disabled {
+    @apply cursor-default bg-white bg-opacity-10;
+  }
+
 }
