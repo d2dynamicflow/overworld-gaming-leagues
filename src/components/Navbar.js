@@ -41,11 +41,7 @@ const Navbar = () => {
     {
       text: 'PLAYER STATS',
       pathname: '/player-stats'
-    },
-    {
-      text: 'LOGOUT',
-      pathname: '/logout'
-    },
+    }
   ]
 
   return (
@@ -60,6 +56,15 @@ const Navbar = () => {
           { navItems.map((navItem, index) => (
             <NavItem navItem={ navItem } key={ index } toggleMenu={ toggleMenu } />
           )) }
+          { true ?
+            <li className="menu-item">
+              <a href="/login" className="menu-link">LOG IN</a>
+            </li>
+            :
+            <li className="menu-item">
+              <a href="/logout" className="menu-link">LOGOUT</a>
+            </li>
+          }
           <li className="menu-item">
             <a href="/" onClick={ toggleMenu } className="menu-btn">CONNECT</a>
           </li>

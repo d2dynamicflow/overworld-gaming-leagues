@@ -66,9 +66,9 @@ const TournamentDetails = () => {
         <div className="flex items-center">
 
           <p className="registration-timer">
-            <RegistrationTimer timer={ tournament.startDate } />
+            <RegistrationTimer timer={ tournament.startDate } />  
           </p>
-          <button className="btn-enroll" disabled>Enroll Now</button>
+          <button className="btn-enroll">Enroll Now</button>
         </div>
       </div>
     </div>

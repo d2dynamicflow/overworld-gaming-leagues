@@ -50,8 +50,18 @@ export const GlobalProvider = (props) => {
     return text.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
   }
 
+  const login = () => {
+    
+  }
+  
+
   let initialState = {
     "loading": true,
+    "auth": {
+      "isLogin": localStorage.getItem("isLogin"),
+      "user": JSON.parse(localStorage.getItem("user")),
+      "token": ""
+    },
     "games": [],
     "tournaments": [],
     "functions": {

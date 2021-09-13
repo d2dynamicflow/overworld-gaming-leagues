@@ -5,6 +5,7 @@ import Games from "./Games";
 import Loader from "./Loader";
 import TournamentDetails from "./TournamentDetails";
 import Tournaments from "./Tournaments";
+import Login from "./Login";
 
 
 const Main = () => {
@@ -28,6 +29,10 @@ const Main = () => {
           </Route>
           <Route path="/player-stats">
             <h1 className="text-3xl text-center text-white mb-8">PLAYER STATS</h1>
+          </Route>
+          <Route path="/login">
+            <h1 className="text-3xl text-center text-white mb-8">LOG IN</h1>
+            <Login />
           </Route>
           <Route path="/logout">
             <h1 className="text-3xl text-center text-white mb-8">LOGOUT</h1>
