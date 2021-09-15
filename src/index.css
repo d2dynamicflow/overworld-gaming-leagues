@@ -4,6 +4,64 @@
 @tailwind utilities;
 
 @layer components {
+  .form-input {
+    @apply mb-3 rounded-lg text-white bg-black bg-opacity-40 backdrop-filter backdrop-blur-lg;
+  }
+  .form-input:focus {
+    @apply border-white border-opacity-50 ring-transparent;
+  }
+
+  .btn-login {
+    @apply text-white bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm rounded-lg border border-white border-opacity-50 shadow-lg py-2;
+  }
+
+  .messages {
+    @apply flex flex-col-reverse pointer-events-none z-50 max-w-md fixed left-0 top-0 h-full p-5;
+  }
+  
+  .message-box {
+    @apply flex text-white backdrop-filter backdrop-blur-lg shadow-lg rounded-lg px-5 py-5 mb-2;
+    text-shadow: 1px 1px 10px rgba(0,0,0,0.5);
+    background: rgb(255, 255, 255, 0.1);
+  }
+  
+  .message-box .message-circle {
+    @apply text-black rounded-full bg-white filter drop-shadow-lg p-1;
+  }
+  
+  .message-box .message-body {
+    @apply font-bold text-white mb-1;
+  }
+  
+  .message-box .message-desc {
+    @apply text-xs;
+  }
+  
+  .message-box.error {
+    background: linear-gradient(90deg, rgba(255,0,0,0.25) 0%, rgba(255,255,255,0.05) 30%);
+  }
+  
+  .message-box.error .message-circle {
+    @apply bg-messageRed;
+  }
+
+  .message-box.error .message-body {
+    @apply text-messageRed;
+  }
+  
+  .message-box.success {
+    background: linear-gradient(90deg, rgba(0,255,0,0.25) 0%, rgba(255,255,255,0.05) 30%);
+  }
+  
+  .message-box.success .message-circle {
+    @apply bg-messageGreen;
+  }
+
+  .message-box.success .message-body {
+    @apply text-messageGreen;
+  }
+
+
   #mainNav {
     @apply bg-darkPurple text-white;
   }

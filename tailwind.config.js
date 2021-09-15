@@ -1,5 +1,5 @@
 module.exports = {
-  mode: 'jit',
+  // mode: 'jit',
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -8,6 +8,16 @@ module.exports = {
       'indigo': '#49076a',
       'lincolnGreen': '#055716',
       'darkPurple': '#271330',
+      'messageGreen': '#00DD68',
+      'messageRed': '#FF0046',
+    }),
+    textColor: theme => ({
+      ...theme('colors'),
+      'indigo': '#49076a',
+      'lincolnGreen': '#055716',
+      'darkPurple': '#271330',
+      'messageGreen': '#00DD68',
+      'messageRed': '#FF0046',
     }),
     borderWidth: {
       DEFAULT: '1px',
@@ -22,5 +32,7 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 }

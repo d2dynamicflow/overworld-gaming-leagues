@@ -4,6 +4,19 @@ export const GlobalContext = createContext();
 
 
 export const GlobalProvider = (props) => {
+  let initialState = {
+    "loading": true,
+    "auth": {
+      "isLogin": localStorage.getItem("isLogin"),
+      "user": JSON.parse(localStorage.getItem("user")),
+      "token": ""
+    },
+    "games": [],
+    "tournaments": [],
+    "messages": []
+  };
+
+  const [state, setState] = useState(initialState);
   const apiUrl = "https://json-server-d2dynamicflow.herokuapp.com";
   // Fetch Games
   const fetchGames = async () => {
@@ -12,7 +25,9 @@ export const GlobalProvider = (props) => {
       const data = await res.json()
       return data
     } catch (error) {
-      console.log(error);
+      console.log("1", state.messages);
+      setState({ ...state, "messages": [...state.messages, { "type": "error", "body": "Data Fetching Error", "desc": error.message }] })
+      return null
     }
   }
   // Fetch Game By Id
@@ -32,7 +47,9 @@ export const GlobalProvider = (props) => {
       const data = await res.json()
       return data
     } catch (error) {
-      console.log(error);
+      console.log("2", state.messages);
+      setState({ ...state, "messages": [...state.messages, { "type": "error", "body": "Data Fetching Error", "desc": error.message }] })
+      return null
     }
   }
   // Fetch Tournaments
@@ -45,43 +62,21 @@ export const GlobalProvider = (props) => {
   //     console.log(error);
   //   }
   // }
-  // Convert To Slug
-  const convertToSlug = (text) => {
-    return text.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
-  }
+
 
   const login = () => {
-    
+
   }
-  
-
-  let initialState = {
-    "loading": true,
-    "auth": {
-      "isLogin": localStorage.getItem("isLogin"),
-      "user": JSON.parse(localStorage.getItem("user")),
-      "token": ""
-    },
-    "games": [],
-    "tournaments": [],
-    "functions": {
-      // fetchGames,
-      // fetchGameById,
-      // fetchTournaments,
-      // fetchTournamentsById,
-      convertToSlug
-    }
-  };
-
-  const [state, setState] = useState(initialState);
 
   useEffect(() => {
     const getData = async () => {
       const gamesFromServer = await fetchGames()
       const tournamentsFromServer = await fetchTournaments()
-      setState(prevState => {
-        return { ...prevState, "games": gamesFromServer, "tournaments": tournamentsFromServer, "loading": false };
-      })
+      if (gamesFromServer || tournamentsFromServer) {
+        setState(prevState => {
+          return { ...prevState, "games": gamesFromServer, "tournaments": tournamentsFromServer, "loading": false };
+        })
+      }
     }
     getData()
   }, [])
