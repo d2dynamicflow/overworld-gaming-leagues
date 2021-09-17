@@ -5,22 +5,33 @@
 
 @layer components {
   .form-input {
-    @apply mb-3 rounded-lg text-white bg-black bg-opacity-40 backdrop-filter backdrop-blur-lg;
+    @apply rounded-lg text-white bg-white bg-opacity-20 backdrop-filter backdrop-blur border-transparent shadow placeholder-gray-200 mb-3 focus:bg-white focus:bg-opacity-80 focus:border-transparent focus:ring-transparent focus:placeholder-gray-600;
   }
-  .form-input:focus {
-    @apply border-white border-opacity-50 ring-transparent;
+  
+  .btn-outline:focus-visible,
+  .btn-primary:focus-visible,
+  .form-input:focus-visible {
+    @apply outline-none;
+  }
+  
+  .form-input:focus-visible {
+    @apply outline-none text-gray-800;
   }
 
-  .btn-login {
-    @apply text-white bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm rounded-lg border border-white border-opacity-50 shadow-lg py-2;
+  .btn-primary {
+    @apply text-white bg-mediumSlateBlue bg-opacity-40 backdrop-filter backdrop-blur rounded-lg border border-transparent shadow py-2 transition-colors duration-150 mb-3 hover:bg-opacity-80 focus:bg-opacity-80;
+  }
+
+  .btn-outline {
+    @apply text-gray-200 bg-white bg-opacity-5 rounded-lg border border-white border-opacity-20 shadow py-2 transition-colors duration-150 mb-3 hover:bg-opacity-10 focus:bg-opacity-10;
   }
 
   .messages {
-    @apply flex flex-col-reverse pointer-events-none z-50 max-w-md fixed left-0 top-0 h-full p-5;
+    @apply flex flex-col-reverse items-end pointer-events-none z-50 fixed bg-black -left-full top-0 h-full w-full py-5;
   }
   
   .message-box {
-    @apply flex text-white backdrop-filter backdrop-blur-lg shadow-lg rounded-lg px-5 py-5 mb-2;
+    @apply flex w-96 text-white backdrop-filter backdrop-blur-lg shadow-lg rounded-lg px-5 py-5 mb-2;
     text-shadow: 1px 1px 10px rgba(0,0,0,0.5);
     background: rgb(255, 255, 255, 0.1);
   }
@@ -38,7 +49,7 @@
   }
   
   .message-box.error {
-    background: linear-gradient(90deg, rgba(255,0,0,0.25) 0%, rgba(255,255,255,0.05) 30%);
+    background: linear-gradient(90deg, rgba(255,0,0,0.20) 0%, rgba(255,255,255,0.05) 30%);
   }
   
   .message-box.error .message-circle {
@@ -50,7 +61,7 @@
   }
   
   .message-box.success {
-    background: linear-gradient(90deg, rgba(0,255,0,0.25) 0%, rgba(255,255,255,0.05) 30%);
+    background: linear-gradient(90deg, rgba(0,255,0,0.20) 0%, rgba(255,255,255,0.05) 30%);
   }
   
   .message-box.success .message-circle {
@@ -60,7 +71,6 @@
   .message-box.success .message-body {
     @apply text-messageGreen;
   }
-
 
   #mainNav {
     @apply bg-darkPurple text-white;
@@ -98,7 +108,7 @@
   }
 
   #mainNav .menu-nav .menu-item .menu-btn {
-    @apply bg-indigo cursor-pointer rounded block lg:inline-block transition-colors duration-500 py-3 px-4 hover:border-white hover:bg-opacity-80;
+    @apply bg-mediumSlateBlue bg-opacity-40 backdrop-filter backdrop-blur-lg cursor-pointer rounded-lg block lg:inline-block transition-colors duration-500 py-3 px-4 hover:border-white hover:bg-opacity-80;
   }
 
   #mainSection {
@@ -249,4 +259,21 @@
     @apply cursor-default bg-white bg-opacity-10;
   }
 
+}
+
+@keyframes slideIn {
+  from {transform: translateX(-5rem); opacity: 0;}
+  to {transform: translateX(0); opacity: 1;}
+}
+
+@keyframes slideOut {
+  form {transform: translateX(0); opacity: 1;}
+  to {transform: translateX(-5rem); opacity: 0;}
+}
+
+@keyframes slide {
+  0% {transform: translateX(0); opacity: 0;}
+  20% {transform: translateX(26rem); opacity: 1;}
+  80% {transform: translateX(26rem); opacity: 1;}
+  100% {transform: translateX(0); opacity: 0;}
 }

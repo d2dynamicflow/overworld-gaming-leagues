@@ -4,6 +4,8 @@ export const GlobalContext = createContext();
 
 
 export const GlobalProvider = (props) => {
+  const apiUrl = "https://json-server-d2dynamicflow.herokuapp.com";
+
   let initialState = {
     "loading": true,
     "auth": {
@@ -13,11 +15,14 @@ export const GlobalProvider = (props) => {
     },
     "games": [],
     "tournaments": [],
-    "messages": []
+    "messages": [],
+    "function": [
+      login
+    ]
   };
 
   const [state, setState] = useState(initialState);
-  const apiUrl = "https://json-server-d2dynamicflow.herokuapp.com";
+  let messageArray = []
   // Fetch Games
   const fetchGames = async () => {
     try {
@@ -25,8 +30,7 @@ export const GlobalProvider = (props) => {
       const data = await res.json()
       return data
     } catch (error) {
-      console.log("1", state.messages);
-      setState({ ...state, "messages": [...state.messages, { "type": "error", "body": "Data Fetching Error", "desc": error.message }] })
+      messageArray = [...messageArray, { "type": "error", "body": "Data Fetching Error", "desc": error.message }]
       return null
     }
   }
@@ -47,8 +51,7 @@ export const GlobalProvider = (props) => {
       const data = await res.json()
       return data
     } catch (error) {
-      console.log("2", state.messages);
-      setState({ ...state, "messages": [...state.messages, { "type": "error", "body": "Data Fetching Error", "desc": error.message }] })
+      messageArray = [...messageArray, { "type": "error", "body": "Data Fetching Error", "desc": error.message }]
       return null
     }
   }
@@ -63,11 +66,6 @@ export const GlobalProvider = (props) => {
   //   }
   // }
 
-
-  const login = () => {
-
-  }
-
   useEffect(() => {
     const getData = async () => {
       const gamesFromServer = await fetchGames()
@@ -75,6 +73,10 @@ export const GlobalProvider = (props) => {
       if (gamesFromServer || tournamentsFromServer) {
         setState(prevState => {
           return { ...prevState, "games": gamesFromServer, "tournaments": tournamentsFromServer, "loading": false };
+        })
+      } else {
+        setState(prevState => {
+          return { ...prevState, "messages": [...messageArray] };
         })
       }
     }
