@@ -1,4 +1,3 @@
-import { logDOM } from "@testing-library/dom"
 import { useContext } from "react"
 import { GlobalContext } from "../Context/GlobalContext"
 import Message from "./Message"

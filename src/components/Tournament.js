@@ -1,14 +1,10 @@
-import { useContext } from "react";
 import moment from 'moment';
-import { GlobalContext } from "../Context/GlobalContext";
 import TournamentTimer from "./TournamentTimer";
 import { Link } from "react-router-dom";
 import { convertToSlug } from '../Helpers'
 
 
 const Tournament = ({ tournament }) => {
-  const [state] = useContext(GlobalContext)
-
   return (
     <Link to={ {
       pathname: `/tournaments/${convertToSlug(tournament.name)}`,

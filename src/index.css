@@ -77,7 +77,7 @@
   }
 
   #mainNav .menu-nav {
-    @apply flex flex-col lg:flex-row lg:justify-center;
+    @apply flex flex-col lg:flex-row lg:justify-center overflow-hidden;
     transition-property: height;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 450ms;
@@ -88,7 +88,7 @@
   }
 
   #mainNav .menu-nav.hide {
-    @apply h-0 overflow-hidden;
+    @apply h-0;
   }
 
   #mainNav .menu-nav .menu-item {

@@ -34,9 +34,6 @@ const Main = () => {
             <h1 className="text-3xl text-center text-white mb-8">LOG IN</h1>
             <Login />
           </Route>
-          <Route path="/logout">
-            <h1 className="text-3xl text-center text-white mb-8">LOGOUT</h1>
-          </Route>
           <Route path="/games/:name">
             <h1 className="text-3xl text-center text-white mb-8">All TOURNAMENTS</h1>
             { state.loading ? <Loader /> : <Tournaments /> }

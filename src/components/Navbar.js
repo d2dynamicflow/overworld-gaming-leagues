@@ -1,13 +1,34 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { BiMenu } from 'react-icons/bi';
+import { useHistory } from 'react-router';
+import { GlobalContext } from '../Context/GlobalContext';
 import NavItem from "./NavItem"
 
 const Navbar = () => {
+  const [state, setState] = useContext(GlobalContext)
+  let history = useHistory()
   const [responsive, setResponsive] = useState(false)
   const [largeScreen, setLargeScreen] = useState(window.innerWidth >= 1024)
   const toggleMenu = () => {
     setResponsive(!responsive);
   }
+
+  const logout = (e) => {
+    e.preventDefault()
+    // logout
+    localStorage.removeItem('login')
+    localStorage.removeItem('user')
+    localStorage.removeItem('token')
+    setState({
+      ...state, "auth": {
+        "isLogin": false,
+        "user": null,
+        "token": ""
+      }
+    })
+    history.replace("/")
+  }
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -56,13 +77,13 @@ const Navbar = () => {
           { navItems.map((navItem, index) => (
             <NavItem navItem={ navItem } key={ index } toggleMenu={ toggleMenu } />
           )) }
-          { true ?
+          { state.auth.isLogin ?
             <li className="menu-item">
-              <a href="/login" className="menu-link">LOG IN</a>
+              <a href="/logout" className="menu-link" onClick={ logout }>LOGOUT</a>
             </li>
             :
             <li className="menu-item">
-              <a href="/logout" className="menu-link">LOGOUT</a>
+              <a href="/login" className="menu-link">LOG IN</a>
             </li>
           }
           <li className="menu-item">
