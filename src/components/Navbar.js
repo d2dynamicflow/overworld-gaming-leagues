@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { BiMenu } from 'react-icons/bi';
 import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 import { GlobalContext } from '../Context/GlobalContext';
 import NavItem from "./NavItem"
 
@@ -79,15 +80,15 @@ const Navbar = () => {
           )) }
           { state.auth.isLogin ?
             <li className="menu-item">
-              <a href="/logout" className="menu-link" onClick={ logout }>LOGOUT</a>
+              <button className="menu-link" onClick={ logout }>LOGOUT</button>
             </li>
             :
             <li className="menu-item">
-              <a href="/login" className="menu-link">LOG IN</a>
+              <Link to="/login" className="menu-link">LOG IN</Link>
             </li>
           }
           <li className="menu-item">
-            <a href="/" onClick={ toggleMenu } className="menu-btn">CONNECT</a>
+            <Link to="/" onClick={ toggleMenu } className="menu-btn">CONNECT</Link>
           </li>
         </ul>
       </div>

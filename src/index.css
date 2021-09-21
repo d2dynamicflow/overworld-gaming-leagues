@@ -7,69 +7,23 @@
   .form-input {
     @apply rounded-lg text-white bg-white bg-opacity-20 backdrop-filter backdrop-blur border-transparent shadow placeholder-gray-200 mb-3 focus:bg-white focus:bg-opacity-80 focus:border-transparent focus:ring-transparent focus:placeholder-gray-600;
   }
-  
+
   .btn-outline:focus-visible,
   .btn-primary:focus-visible,
   .form-input:focus-visible {
     @apply outline-none;
   }
-  
+
   .form-input:focus-visible {
     @apply outline-none text-gray-800;
   }
 
   .btn-primary {
-    @apply text-white bg-mediumSlateBlue bg-opacity-40 backdrop-filter backdrop-blur rounded-lg border border-transparent shadow py-2 transition-colors duration-150 mb-3 hover:bg-opacity-80 focus:bg-opacity-80;
+    @apply text-white text-center bg-mediumSlateBlue bg-opacity-40 backdrop-filter backdrop-blur rounded-lg border border-transparent shadow py-2 transition-colors duration-150 mb-3 hover:bg-opacity-80 focus:bg-opacity-80;
   }
 
   .btn-outline {
-    @apply text-gray-200 bg-white bg-opacity-5 rounded-lg border border-white border-opacity-20 shadow py-2 transition-colors duration-150 mb-3 hover:bg-opacity-10 focus:bg-opacity-10;
-  }
-
-  .messages {
-    @apply flex flex-col-reverse items-end pointer-events-none z-50 fixed bg-black -left-full top-0 h-full w-full py-5;
-  }
-  
-  .message-box {
-    @apply flex w-96 text-white backdrop-filter backdrop-blur-lg shadow-lg rounded-lg px-5 py-5 mb-2;
-    text-shadow: 1px 1px 10px rgba(0,0,0,0.5);
-    background: rgb(255, 255, 255, 0.1);
-  }
-  
-  .message-box .message-circle {
-    @apply text-black rounded-full bg-white filter drop-shadow-lg p-1;
-  }
-  
-  .message-box .message-body {
-    @apply font-bold text-white mb-1;
-  }
-  
-  .message-box .message-desc {
-    @apply text-xs;
-  }
-  
-  .message-box.error {
-    background: linear-gradient(90deg, rgba(255,0,0,0.20) 0%, rgba(255,255,255,0.05) 30%);
-  }
-  
-  .message-box.error .message-circle {
-    @apply bg-messageRed;
-  }
-
-  .message-box.error .message-body {
-    @apply text-messageRed;
-  }
-  
-  .message-box.success {
-    background: linear-gradient(90deg, rgba(0,255,0,0.20) 0%, rgba(255,255,255,0.05) 30%);
-  }
-  
-  .message-box.success .message-circle {
-    @apply bg-messageGreen;
-  }
-
-  .message-box.success .message-body {
-    @apply text-messageGreen;
+    @apply text-gray-200 text-center bg-white bg-opacity-5 rounded-lg border border-white border-opacity-20 shadow py-2 transition-colors duration-150 mb-3 hover:bg-opacity-10 focus:bg-opacity-10;
   }
 
   #mainNav {
@@ -203,11 +157,17 @@
     @apply flex-grow;
   }
 
-  .tournament-details .tournament-details-block .tournament-details-block-info .tournament-name {
+  .tournament-details
+    .tournament-details-block
+    .tournament-details-block-info
+    .tournament-name {
     @apply text-3xl md:text-4xl font-bold mb-3;
   }
 
-  .tournament-details .tournament-details-block .tournament-details-block-info .tournament-game-name {
+  .tournament-details
+    .tournament-details-block
+    .tournament-details-block-info
+    .tournament-game-name {
     @apply mb-3;
   }
 
@@ -218,15 +178,15 @@
   .tournament-details .tournament-info-table {
     @apply table-auto;
   }
-  
+
   .tournament-details .tournament-info-table tr td {
     @apply px-5 py-1;
   }
-  
+
   .tournament-details .tournament-info-table tr td:first-child {
     @apply pl-0;
   }
-  
+
   .tournament-details .tournament-info-table tr td:last-child {
     @apply pr-0;
   }
@@ -242,7 +202,7 @@
   .tournament-details .tournament-info-table .table-header td {
     @apply text-xs;
   }
-  
+
   .tournament-details .registration-timer {
     @apply text-gray-400 mr-4;
   }
@@ -258,22 +218,45 @@
   .tournament-details .btn-enroll:disabled {
     @apply cursor-default bg-white bg-opacity-10;
   }
-
 }
 
 @keyframes slideIn {
-  from {transform: translateX(-5rem); opacity: 0;}
-  to {transform: translateX(0); opacity: 1;}
+  from {
+    transform: translateX(-5rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 @keyframes slideOut {
-  form {transform: translateX(0); opacity: 1;}
-  to {transform: translateX(-5rem); opacity: 0;}
+  form {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-5rem);
+    opacity: 0;
+  }
 }
 
 @keyframes slide {
-  0% {transform: translateX(0); opacity: 0;}
-  20% {transform: translateX(26rem); opacity: 1;}
-  80% {transform: translateX(26rem); opacity: 1;}
-  100% {transform: translateX(0); opacity: 0;}
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  20% {
+    transform: translateX(26rem);
+    opacity: 1;
+  }
+  80% {
+    transform: translateX(26rem);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 0;
+  }
 }

@@ -1,10 +1,11 @@
 import { BrowserRouter as Router } from "react-router-dom";
+import { GlobalProvider } from "./Context/GlobalContext";
+import { Slide, ToastContainer } from 'react-toastify';
 import Header from "./components/Header";
 import Main from "./components/Main";
-import Messages from "./components/Messages";
 import Navbar from "./components/Navbar";
-import { GlobalProvider } from "./Context/GlobalContext";
-
+import './ReactToastify.css';
+// import 'react-toastify/dist/ReactToastify.minimal.css';
 function App() {
 
   return (
@@ -14,7 +15,20 @@ function App() {
           <Header />
           <Navbar />
           <Main />
-          <Messages />
+          <ToastContainer
+            toastClassName="toastifyToastContainer"
+            position="bottom-right"
+            autoClose={ 5 * 1000 }
+            hideProgressBar
+            newestOnTop
+            closeOnClick
+            rtl={ false }
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            limit={ 5 }
+            transition={ Slide }
+          />
         </div>
       </Router>
     </GlobalProvider>
