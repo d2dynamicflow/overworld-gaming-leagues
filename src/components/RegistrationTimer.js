@@ -2,6 +2,7 @@ import moment from "moment";
 import { useEffect, useState } from "react";
 
 const RegistrationTimer = ({ timer }) => {
+  // eslint-disable-next-line no-unused-vars
   const [time, setTime] = useState(Date.now());
 
   useEffect(() => {
