@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react"
+import { toast } from "react-toastify";
 
 export const GlobalContext = createContext();
 
@@ -28,6 +29,7 @@ export const GlobalProvider = (props) => {
         const data = await res.json()
         return data
       } catch (error) {
+        toast.error(error.message)
         messageArray = [...messageArray, { "type": "error", "body": "Game Data Fetching Error", "desc": error.message }]
         return null
       }
@@ -39,6 +41,7 @@ export const GlobalProvider = (props) => {
         const data = await res.json()
         return data
       } catch (error) {
+        toast.error(error.message)
         messageArray = [...messageArray, { "type": "error", "body": "Tournament Data Fetching Error", "desc": error.message }]
         return null
       }
@@ -50,6 +53,7 @@ export const GlobalProvider = (props) => {
         const data = await res.json()
         return data
       } catch (error) {
+        toast.error(error.message)
         messageArray = [...messageArray, { "type": "error", "body": "User Data Fetching Error", "desc": error.message }]
         return null
       }
