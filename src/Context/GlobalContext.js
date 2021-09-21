@@ -4,7 +4,6 @@ export const GlobalContext = createContext();
 
 
 export const GlobalProvider = (props) => {
-  let messageArray = []
   let initialState = {
     "loading": true,
     "auth": {
@@ -19,63 +18,43 @@ export const GlobalProvider = (props) => {
   };
 
   const [state, setState] = useState(initialState);
-  console.log(state);
-  // Fetch Games
-  const fetchGames = async () => {
-    try {
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/games`)
-      const data = await res.json()
-      return data
-    } catch (error) {
-      messageArray = [...messageArray, { "type": "error", "body": "Game Data Fetching Error", "desc": error.message }]
-      return null
-    }
-  }
-  // Fetch Game By Id
-  // const fetchGameById = async (id) => {
-  //   try {
-  //     const res = await fetch(`${process.env.REACT_APP_API_URL}/games/${id}`)
-  //     const data = await res.json()
-  //     return data
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-  // Fetch Tournaments
-  const fetchTournaments = async () => {
-    try {
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/tournaments`)
-      const data = await res.json()
-      return data
-    } catch (error) {
-      messageArray = [...messageArray, { "type": "error", "body": "Tournament Data Fetching Error", "desc": error.message }]
-      return null
-    }
-  }
-  // Fetch Tournaments
-  // const fetchTournamentsById = async (id) => {
-  //   try {
-  //     const res = await fetch(`${process.env.REACT_APP_API_URL}/tournaments/${id}`)
-  //     const data = await res.json()
-  //     return data
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-
-  const fetchUsers = async () => {
-    try {
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/users`)
-      const data = await res.json()
-      return data
-    } catch (error) {
-      messageArray = [...messageArray, { "type": "error", "body": "User Data Fetching Error", "desc": error.message }]
-      return null
-    }
-  }
-
   useEffect(() => {
-    console.log(state);
+    let messageArray = []
+
+    // Fetch Games
+    const fetchGames = async () => {
+      try {
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/games`)
+        const data = await res.json()
+        return data
+      } catch (error) {
+        messageArray = [...messageArray, { "type": "error", "body": "Game Data Fetching Error", "desc": error.message }]
+        return null
+      }
+    }
+    // Fetch Tournaments
+    const fetchTournaments = async () => {
+      try {
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/tournaments`)
+        const data = await res.json()
+        return data
+      } catch (error) {
+        messageArray = [...messageArray, { "type": "error", "body": "Tournament Data Fetching Error", "desc": error.message }]
+        return null
+      }
+    }
+    // Fetch Users
+    const fetchUsers = async () => {
+      try {
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/users`)
+        const data = await res.json()
+        return data
+      } catch (error) {
+        messageArray = [...messageArray, { "type": "error", "body": "User Data Fetching Error", "desc": error.message }]
+        return null
+      }
+    }
+
     const getData = async () => {
       const gamesFromServer = await fetchGames()
       const tournamentsFromServer = await fetchTournaments()
