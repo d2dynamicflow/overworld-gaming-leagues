@@ -15,6 +15,7 @@ const Message = ({ message, index, length }) => {
     return () => {
       clearTimeout(timeId)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // If show is false the component will return null and stop here
