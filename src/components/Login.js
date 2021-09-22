@@ -20,13 +20,13 @@ const Login = () => {
     //Validation
     if (!username) {
       if (!toast.isActive(toastIdUsername.current)) {
-        toastIdUsername.current = toast.warn("Please Enter your username")
+        toastIdUsername.current = toast.warn("Please enter your username")
       }
       return
     }
     if (!password) {
       if (!toast.isActive(toastIdPassword.current)) {
-        toastIdPassword.current = toast.warn("Please Enter your password")
+        toastIdPassword.current = toast.warn("Please enter your password")
       }
       return
     }
