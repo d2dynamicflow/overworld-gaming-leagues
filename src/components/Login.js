@@ -5,47 +5,52 @@ import { toast } from "react-toastify"
 
 const Login = () => {
   const [state, setState] = useContext(GlobalContext)
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const toastIdUsername = useRef(null)
-  const toastIdPassword = useRef(null)
-  const toastIdLogin = useRef(null)
+  const [formData, setSetFromData] = useState({
+    username: "",
+    password: ""
+  })
+  const formToast = useRef({
+    username: null,
+    password: null,
+    login: null
+  })
   let history = useHistory()
 
   const onSubmit = (e) => {
     e.preventDefault()
     //Validation
-    if (!username) {
-      if (!toast.isActive(toastIdUsername.current)) {
-        toastIdUsername.current = toast.warn("Please enter your username")
+    if (!formData.username) {
+      if (!toast.isActive(formToast.current.username)) {
+        formToast.current.username = toast.warn("Please enter your username")
       }
       return
     }
-    if (!password) {
-      if (!toast.isActive(toastIdPassword.current)) {
-        toastIdPassword.current = toast.warn("Please enter your password")
+    if (!formData.password) {
+      if (!toast.isActive(formToast.current.password)) {
+        formToast.current.password = toast.warn("Please enter your password")
       }
       return
     }
 
-    let formData = { username, password }
     // Login
     const users = state.users
     const user = users.find(user => user.username === formData.username)
     if (!user) {
-      if (!toast.isActive(toastIdLogin.current)) {
-        toastIdLogin.current = toast.error("The username or password you have entered is wrong")
+      if (!toast.isActive(formToast.current.login)) {
+        formToast.current.login = toast.error("The username or password you have entered is wrong")
       }
       setState({ ...state, "messages": [...state.messages, { "type": "error", "body": "Invalid Credentials", "desc": "The username or password you have entered is wrong" }] })
     } else {
       if (user.password !== formData.password) {
-        if (!toast.isActive(toastIdLogin.current)) {
-          toastIdLogin.current = toast.error("The username or password you have entered is wrong")
+        if (!toast.isActive(formToast.current.login)) {
+          formToast.current.login = toast.error("The username or password you have entered is wrong")
         }
         setState({ ...state, "messages": [...state.messages, { "type": "error", "body": "Invalid Credentials", "desc": "The username or password you have entered is wrong" }] })
       } else {
-        setPassword('')
-        setUsername('')
+        setSetFromData({
+          username: "",
+          password: ""
+        })
         localStorage.setItem('login', "true")
         localStorage.setItem('token', "demo_token")
         localStorage.setItem('user', JSON.stringify({ ...user }))
@@ -56,7 +61,6 @@ const Login = () => {
             "token": "demo_token"
           }
         })
-        history.replace("/")
       }
 
     }
@@ -71,8 +75,8 @@ const Login = () => {
   return (
     <div className="container mx-auto px-4 md:px-0">
       <form onSubmit={ onSubmit } className="flex flex-col w-full md:w-96 bg-gray-300 bg-opacity-10 backdrop-filter backdrop-blur shadow-lg rounded-lg px-5 py-7 mx-auto">
-        <input type="text" name="name" placeholder="Username" className="form-input" onChange={ (e) => setUsername(e.target.value) } />
-        <input type="password" name="password" placeholder="Password" className="form-input" onChange={ (e) => setPassword(e.target.value) } />
+        <input type="text" name="name" placeholder="Username" className="form-input" onChange={ (e) => setSetFromData({ ...formData, username: e.target.value }) } />
+        <input type="password" name="password" placeholder="Password" className="form-input" onChange={ (e) => setSetFromData({ ...formData, password: e.target.value }) } />
         <button className="btn-primary">Login</button>
         <Link to="/signup" className="btn-outline mb-3">I don't have an account</Link>
         <div className="w-full text-mediumSlateBlue flex flex-col justify-center items-center">

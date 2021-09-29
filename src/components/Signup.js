@@ -13,7 +13,8 @@ export const Signup = () => {
   const formToast = useRef({
     username: null,
     password: null,
-    account: null
+    account: null,
+    fetch: null
   })
   let history = useHistory()
 
@@ -66,9 +67,15 @@ export const Signup = () => {
               "token": "demo_token"
             }
           })
+        } else {
+          if (!toast.isActive(formToast.current.fetch)) {
+            formToast.current.fetch = toast.error("Something went wrong. Please try again")
+          }
         }
       } catch (error) {
-        toast.error(error.message)
+        if (!toast.isActive(formToast.current.fetch)) {
+          formToast.current.fetch = toast.error(error.message)
+        }
         setState({ ...state, "messages": [...state.messages, { "type": "error", "body": "Game Data Fetching Error", "desc": error.message }] })
         return null
       }
