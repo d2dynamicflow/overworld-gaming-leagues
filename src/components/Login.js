@@ -1,20 +1,17 @@
-import { useContext, useRef, useState } from "react"
-import { GlobalContext } from "../Context/GlobalContext"
-import { useHistory } from 'react-router'
+import { useContext, useEffect, useRef, useState } from "react"
+import { GlobalContext } from "../context/GlobalContext"
+import { Link, useHistory } from "react-router-dom"
 import { toast } from "react-toastify"
-import { Link } from "react-router-dom"
 
 const Login = () => {
   const [state, setState] = useContext(GlobalContext)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const toastIdUsername = useRef(null);
-  const toastIdPassword = useRef(null);
-  const toastIdLogin = useRef(null);
+  const toastIdUsername = useRef(null)
+  const toastIdPassword = useRef(null)
+  const toastIdLogin = useRef(null)
   let history = useHistory()
-  if (state.auth.isLogin) {
-    history.push("/")
-  }
+
   const onSubmit = (e) => {
     e.preventDefault()
     //Validation
@@ -35,7 +32,7 @@ const Login = () => {
     // Login
     const users = state.users
     const user = users.find(user => user.username === formData.username)
-    if (user === undefined) {
+    if (!user) {
       if (!toast.isActive(toastIdLogin.current)) {
         toastIdLogin.current = toast.error("The username or password you have entered is wrong")
       }
@@ -65,13 +62,19 @@ const Login = () => {
     }
   }
 
+  useEffect(() => {
+    if (state.auth.isLogin) {
+      history.push("/")
+    }
+  }, [state, history])
+
   return (
     <div className="container mx-auto px-4 md:px-0">
       <form onSubmit={ onSubmit } className="flex flex-col w-full md:w-96 bg-gray-300 bg-opacity-10 backdrop-filter backdrop-blur shadow-lg rounded-lg px-5 py-7 mx-auto">
         <input type="text" name="name" placeholder="Username" className="form-input" onChange={ (e) => setUsername(e.target.value) } />
         <input type="password" name="password" placeholder="Password" className="form-input" onChange={ (e) => setPassword(e.target.value) } />
         <button className="btn-primary">Login</button>
-        <Link to="/" className="btn-outline">I don't have an account</Link>
+        <Link to="/signup" className="btn-outline mb-3">I don't have an account</Link>
         <div className="w-full text-mediumSlateBlue flex flex-col justify-center items-center">
           <Link to="/">Forgot password?</Link>
         </div>

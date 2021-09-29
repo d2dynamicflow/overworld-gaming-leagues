@@ -23,7 +23,7 @@
   }
 
   .btn-outline {
-    @apply text-gray-200 text-center bg-white bg-opacity-5 rounded-lg border border-white border-opacity-20 shadow py-2 transition-colors duration-150 mb-3 hover:bg-opacity-10 focus:bg-opacity-10;
+    @apply text-gray-200 text-center bg-white bg-opacity-5 rounded-lg border border-white border-opacity-20 shadow py-2 transition-colors duration-150 hover:bg-opacity-10 focus:bg-opacity-10;
   }
 
   #mainNav {
@@ -216,6 +216,81 @@
   }
 
   .tournament-details .btn-enroll:disabled {
+    @apply cursor-default bg-white bg-opacity-10;
+  }
+
+  .player-profile {
+    @apply px-4 lg:px-0;
+  }
+
+  .player-profile .player-profile-block {
+    @apply flex flex-col lg:flex-row bg-white text-white bg-opacity-5 backdrop-filter backdrop-blur-sm rounded-lg p-5 mb-3;
+  }
+
+  .player-profile .player-profile-block .player-profile-block-img {
+    @apply w-20 h-20 lg:w-40 lg:h-40 object-cover rounded shadow-lg mb-3 lg:mb-0 lg:mr-5;
+  }
+
+  .player-profile .player-profile-block .player-profile-block-info {
+    @apply flex-grow;
+  }
+
+  .player-profile
+    .player-profile-block
+    .player-profile-block-info
+    .player-profile-name {
+    @apply text-3xl md:text-4xl font-bold mb-3;
+  }
+
+  .player-profile .player-profile-username {
+    @apply inline-flex bg-white bg-opacity-5 backdrop-filter backdrop-blur-sm rounded-lg px-3 py-1 mb-3;
+  }
+
+  .player-profile .player-profile-block-sm {
+    @apply inline-flex flex-col bg-white bg-opacity-5 backdrop-filter backdrop-blur-sm rounded-lg p-3;
+  }
+
+  .player-profile .player-profile-block-sm .player-profile-block-text {
+    @apply text-xs;
+  }
+
+  .player-profile .player-profile-block-sm .player-profile-block-data {
+    @apply text-xl font-bold;
+  }
+
+  .player-profile .player-profile-info-blocks {
+    @apply w-full grid grid-cols-4;
+  }
+
+  .player-profile .player-profile-info-block {
+    @apply flex flex-col items-center justify-center p-3 text-center;
+  }
+
+  .player-profile .player-profile-info-block:not(:last-child) {
+    @apply border-r;
+  }
+
+  .player-profile .player-profile-info-block .player-profile-info-block-text {
+    @apply text-lg;
+  }
+
+  .player-profile .player-profile-info-block .player-profile-info-block-data {
+    @apply text-3xl;
+  }
+
+  .player-profile .registration-timer {
+    @apply text-gray-400 mr-4;
+  }
+
+  .player-profile .registration-timer span {
+    @apply text-3xl text-white;
+  }
+
+  .player-profile .btn-enroll {
+    @apply font-medium text-xl text-white bg-white bg-opacity-20 backdrop-filter backdrop-blur-sm shadow rounded py-3 px-4;
+  }
+
+  .player-profile .btn-enroll:disabled {
     @apply cursor-default bg-white bg-opacity-10;
   }
 }

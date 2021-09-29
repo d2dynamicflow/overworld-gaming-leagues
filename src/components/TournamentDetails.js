@@ -1,7 +1,7 @@
 import moment from "moment";
 import { useContext, useEffect } from "react";
 import { useHistory, useLocation } from "react-router";
-import { GlobalContext } from "../Context/GlobalContext";
+import { GlobalContext } from "../context/GlobalContext";
 import RegistrationTimer from "./RegistrationTimer";
 
 const TournamentDetails = () => {
@@ -66,7 +66,7 @@ const TournamentDetails = () => {
         <div className="flex items-center">
 
           <p className="registration-timer">
-            <RegistrationTimer timer={ tournament.startDate } />  
+            <RegistrationTimer timer={ tournament.startDate } />
           </p>
           <button className="btn-enroll">Enroll Now</button>
         </div>

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import moment from 'moment';
 import { useContext } from "react";
-import { GlobalContext } from "../Context/GlobalContext";
+import { GlobalContext } from "../context/GlobalContext";
 import { convertToSlug } from '../Helpers'
 
 const Game = ({ game }) => {

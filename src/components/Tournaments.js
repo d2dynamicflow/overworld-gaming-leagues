@@ -1,6 +1,6 @@
 import { useHistory, useLocation } from "react-router-dom";
 import { useContext, useEffect } from "react";
-import { GlobalContext } from "../Context/GlobalContext";
+import { GlobalContext } from "../context/GlobalContext";
 import Tournament from "./Tournament";
 
 

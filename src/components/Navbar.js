@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { BiMenu } from 'react-icons/bi';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
-import { GlobalContext } from '../Context/GlobalContext';
+import { GlobalContext } from '../context/GlobalContext';
 import NavItem from "./NavItem"
 
 const Navbar = () => {

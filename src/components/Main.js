@@ -1,11 +1,13 @@
 import { useContext } from "react";
 import { Switch, Route } from "react-router-dom";
-import { GlobalContext } from "../Context/GlobalContext";
+import { GlobalContext } from "../context/GlobalContext";
 import Games from "./Games";
 import Loader from "./Loader";
 import TournamentDetails from "./TournamentDetails";
 import Tournaments from "./Tournaments";
 import Login from "./Login";
+import Profile from "./Profile";
+import { Signup } from "./Signup";
 
 
 const Main = () => {
@@ -33,6 +35,13 @@ const Main = () => {
           <Route path="/login">
             <h1 className="text-3xl text-center text-white mb-8">LOG IN</h1>
             <Login />
+          </Route>
+          <Route path="/signup">
+            <h1 className="text-3xl text-center text-white mb-8">SIGN UP</h1>
+            <Signup />
+          </Route>
+          <Route path="/profile/:username">
+            <Profile />
           </Route>
           <Route path="/games/:name">
             <h1 className="text-3xl text-center text-white mb-8">All TOURNAMENTS</h1>

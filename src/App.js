@@ -1,5 +1,5 @@
 import { BrowserRouter as Router } from "react-router-dom";
-import { GlobalProvider } from "./Context/GlobalContext";
+import { GlobalProvider } from "./context/GlobalContext";
 import { Slide, ToastContainer } from 'react-toastify';
 import Header from "./components/Header";
 import Main from "./components/Main";
