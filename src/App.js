@@ -5,9 +5,8 @@ import Header from "./components/Header";
 import Main from "./components/Main";
 import Navbar from "./components/Navbar";
 import './ReactToastify.css';
-// import 'react-toastify/dist/ReactToastify.minimal.css';
-function App() {
 
+function App() {
   return (
     <GlobalProvider>
       <Router>

@@ -6,15 +6,15 @@ const Profile = () => {
   const [state] = useContext(GlobalContext);
 
   const { username } = useParams();
-  const history = useHistory();
-  const location = useLocation();
+  // const history = useHistory();
+  // const location = useLocation();
 
   // useEffect is similar to componentDidMount:
-  useEffect(() => {
-    if (location.state === undefined) {
-      history.push("/");
-    }
-  });
+  // useEffect(() => {
+  //   if (location.state === undefined) {
+  //     history.push("/");
+  //   }
+  // });
   const users = state.users;
   // eslint-disable-next-line no-unused-vars
   const user = users.find((user) => user.username === username);

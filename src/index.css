@@ -175,12 +175,16 @@
     @apply bg-white bg-opacity-5 backdrop-filter backdrop-blur-sm rounded-lg p-3;
   }
 
+  .tournament-details .tournament-details-block-prizes {
+    @apply flex flex-col bg-white text-white bg-opacity-5 backdrop-filter backdrop-blur-sm rounded-lg p-2 md:p-5 mb-3;
+  }
+
   .tournament-details .tournament-info-table {
     @apply table-auto;
   }
 
   .tournament-details .tournament-info-table tr td {
-    @apply px-5 py-1;
+    @apply px-1 md:px-5 py-1;
   }
 
   .tournament-details .tournament-info-table tr td:first-child {
@@ -204,11 +208,11 @@
   }
 
   .tournament-details .registration-timer {
-    @apply text-gray-400 mr-4;
+    @apply text-gray-400 mr-4 mb-3 md:mb-0;
   }
 
   .tournament-details .registration-timer span {
-    @apply text-3xl text-white;
+    @apply md:text-3xl text-white;
   }
 
   .tournament-details .btn-enroll {

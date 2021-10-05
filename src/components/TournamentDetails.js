@@ -2,7 +2,12 @@ import moment from "moment";
 import { useContext, useEffect } from "react";
 import { useHistory, useLocation } from "react-router";
 import { GlobalContext } from "../context/GlobalContext";
+import { formatOrdinals } from "../Helpers";
 import RegistrationTimer from "./RegistrationTimer";
+import goldTrophy from "../asset/img/gold-trophy.svg";
+import silverTrophy from "../asset/img/silver-trophy.svg";
+import bronzeTrophy from "../asset/img/bronze-trophy.svg";
+
 
 const TournamentDetails = () => {
   const [state] = useContext(GlobalContext);
@@ -21,7 +26,6 @@ const TournamentDetails = () => {
   const game = state.games.find(game => game.id === tournament.gameId);
   return (
     <div className='tournament-details'>
-      {/* <h1 className="text-3xl text-center text-white mb-8">TOURNAMENT DETAILS</h1> */ }
       <div className="tournament-details-block">
         <img src={ game.imgUrl } alt={ game.name } className="tournament-details-block-img" />
         <div className="tournament-details-block-info">
@@ -63,13 +67,21 @@ const TournamentDetails = () => {
         </div>
       </div>
       <div className="tournament-details-block">
-        <div className="flex items-center">
-
+        <div className="md:flex items-center">
           <p className="registration-timer">
             <RegistrationTimer timer={ tournament.startDate } />
           </p>
           <button className="btn-enroll">Enroll Now</button>
         </div>
+      </div>
+      <div className="grid grid-cols-3 gap-5 lg:w-6/12">
+        { tournament.prizes.map((prize, index) =>
+          <div className="tournament-details-block-prizes" key={ index }>
+            <p className="text-center font-bold">{ formatOrdinals(index + 1) }</p>
+            <img src={ (index === 0 && goldTrophy) || (index === 1 && silverTrophy) || (index === 2 && bronzeTrophy) } alt="gold-trophy" className="max-w-full h-auto" />
+            <p className="text-center font-bold md:mt-3 text-2xl">${ prize.prize }</p>
+          </div>
+        ) }
       </div>
     </div>
   )
